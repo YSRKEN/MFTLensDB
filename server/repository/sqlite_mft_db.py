@@ -1,7 +1,7 @@
 import os
 import sqlite3
 from contextlib import closing
-from typing import List, Dict
+from typing import List
 
 from model.lens import Lens
 from repository.i_mft_db import IMftDb
@@ -9,7 +9,7 @@ from repository.i_mft_db import IMftDb
 
 class SQLiteMftDb(IMftDb):
     def __init__(self):
-        self.file_path = os.path.join(os.path.dirname(__file__), '..', 'database', '.sqlite')
+        self.file_path = os.path.join(os.path.dirname(__file__), '..', 'database', 'db.sqlite')
 
     def get_lenses(self) -> List[Lens]:
         connect = closing(sqlite3.connect(self.file_path))
